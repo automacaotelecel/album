@@ -1,0 +1,483 @@
+/* src/App.css */
+
+/* Configuração base 3D */
+.perspective-1000 { perspective: 1000px; }
+.preserve-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+
+/* --- ANIMAÇÃO DE ABERTURA DO PACOTE --- */
+@keyframes shakePack {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-8deg) scale(1.05); }
+  40% { transform: rotate(8deg) scale(1.05); }
+  60% { transform: rotate(-8deg) scale(1.1); }
+  80% { transform: rotate(8deg) scale(1.05); }
+}
+.animate-shake-pack {
+  animation: shakePack 0.8s ease-in-out forwards;
+}
+
+/* --- ANIMAÇÃO PADRÃO DE REVELAÇÃO DO CROMO --- */
+@keyframes revealSticker {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+.animate-reveal-sticker {
+  animation: revealSticker 0.6s ease-out forwards;
+}
+
+/* --- NOVA ANIMAÇÃO ULTRA ESPECIAL PARA OS PRÊMIOS --- */
+@keyframes prizeReveal {
+  0% { transform: scale(0) rotate(-180deg); filter: brightness(3); opacity: 0; }
+  60% { transform: scale(1.25) rotate(15deg); filter: brightness(1.5); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); filter: brightness(1); box-shadow: 0 0 35px rgba(34, 197, 94, 0.8); }
+}
+.animate-prize-reveal {
+  animation: prizeReveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* --- EFEITO PULSANTE DA PÁGINA PRINCESA --- */
+@keyframes pinkGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(244, 63, 94, 0.4), inset 0 0 5px rgba(244, 63, 94, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(244, 63, 94, 0.8), inset 0 0 12px rgba(244, 63, 94, 0.4); }
+}
+.princesa-frame {
+  animation: pinkGlow 2s infinite ease-in-out;
+  background: linear-gradient(to bottom, #fff0f5, #ffe4e1) !important;
+}
+
+/* Cascata de Confetti */
+@keyframes confettiFall {
+  0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
+}
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: confettiFall 2.5s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Brilho Holográfico Panini Ouro */
+.holographic {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 25%,
+    rgba(255, 215, 0, 0.6) 40%,
+    rgba(255, 105, 180, 0.4) 60%,
+    rgba(255, 255, 255, 0.8) 75%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 300% 300%;
+  animation: shine 4s infinite linear;
+  mix-blend-mode: color-dodge;
+}
+@keyframes shine {
+  0% { background-position: 300% 300%; }
+  100% { background-position: -100% -100%; }
+}
+
+.pack-texture {
+  background-image: linear-gradient(105deg, transparent 20%, rgba(255,255,255,0.15) 25%, transparent 30%);
+}
+.animate-fade-in { animation: fadeIn 0.4s ease-in forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ===== HERO / TOPO PROFISSIONAL COPA DO AMOR ===== */
+
+.hero-copa-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 26px 16px 18px;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255,255,255,0.14), transparent 28%),
+    linear-gradient(180deg, rgba(2, 8, 28, 0.94), rgba(3, 13, 39, 0.78));
+  box-shadow: 0 18px 55px rgba(0,0,0,0.35);
+}
+
+.hero-copa-lights {
+  position: absolute;
+  inset: -60%;
+  opacity: 0.42;
+  pointer-events: none;
+  background:
+    conic-gradient(
+      from 0deg,
+      transparent,
+      rgba(255,216,77,0.22),
+      transparent,
+      rgba(34,197,94,0.22),
+      transparent,
+      rgba(255,255,255,0.18),
+      transparent
+    );
+  animation: heroLightsSpin 18s linear infinite;
+}
+
+.hero-copa-badge {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,216,77,0.35);
+  background: rgba(255,216,77,0.12);
+  color: #ffe16a;
+  font-size: 10px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.hero-copa-title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  display: inline-block;
+  font-size: clamp(42px, 8vw, 82px);
+  line-height: 0.88;
+  font-weight: 1000;
+  font-style: italic;
+  letter-spacing: -0.09em;
+  color: #fff;
+  transform: skewX(-9deg);
+  text-shadow:
+    0 2px 0 #ffd84d,
+    0 5px 0 rgba(34,197,94,0.9),
+    0 15px 30px rgba(0,0,0,0.8);
+}
+
+.hero-copa-title span {
+  color: #fff;
+  text-shadow:
+    0 2px 0 #ffdf4d,
+    0 5px 0 #22c55e,
+    0 0 28px rgba(255,255,255,0.55);
+}
+
+.hero-copa-title::after {
+  content: "";
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -12px;
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #facc15, #22c55e);
+  box-shadow: 0 0 18px rgba(250,204,21,0.45);
+  transform: skewX(9deg);
+}
+
+.hero-copa-subtitle {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+  margin: 18px auto 0;
+  color: rgba(255,255,255,0.72);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-copa-ribbon {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 4px 13px;
+  background: #22c55e;
+  color: #03142c;
+  font-size: 10px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  transform: skewX(-12deg);
+  box-shadow: 4px 4px 0 #facc15;
+}
+
+@keyframes heroLightsSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ===== MENU LATERAL RECOLHÍVEL ===== */
+
+.mobile-menu-toggle {
+  position: fixed;
+  left: 14px;
+  bottom: 18px;
+  z-index: 80;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(3, 10, 28, 0.92);
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 16px 45px rgba(0,0,0,0.55);
+  backdrop-filter: blur(14px);
+}
+
+.side-nav {
+  position: fixed;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 70;
+  width: 72px;
+  padding: 10px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(3, 10, 28, 0.84);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.side-nav-item {
+  width: 52px;
+  min-height: 52px;
+  border-radius: 17px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.72);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.side-nav-item span {
+  font-size: 8px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.side-nav-item:hover,
+.side-nav-active {
+  color: #facc15;
+  border-color: rgba(250,204,21,0.28);
+  background: rgba(250,204,21,0.12);
+  transform: translateY(-1px);
+}
+
+.side-nav-install {
+  color: #67f0bb;
+}
+
+.side-nav-installed {
+  color: #22c55e;
+  background: rgba(34,197,94,0.12);
+}
+
+.side-nav-count {
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #ef4444;
+  color: #fff;
+  border: 1px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 1000;
+}
+
+.side-nav-count-green {
+  background: #22c55e;
+  color: #03142c;
+}
+
+.mobile-menu-backdrop {
+  display: none;
+}
+
+/* ===== TOPO DAS PÁGINAS DO ÁLBUM ===== */
+
+.album-page-header {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 14px;
+  min-height: 82px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(180deg, rgba(3, 10, 28, 0.92), rgba(5, 16, 40, 0.82));
+  backdrop-filter: blur(14px);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.album-page-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  text-align: center;
+  line-height: 1.05;
+}
+
+.album-page-counter {
+  display: inline-flex;
+  margin-bottom: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 208, 0, 0.12);
+  border: 1px solid rgba(255, 208, 0, 0.22);
+  color: #ffd84d;
+  font-size: 10px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.album-page-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.album-page-subtitle {
+  margin: 5px 0 0 0;
+  color: #67f0bb;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.album-page-arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.album-page-arrow:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.03);
+  background: rgba(103, 240, 187, 0.14);
+  border-color: rgba(103, 240, 187, 0.28);
+}
+
+.album-page-arrow:disabled {
+  opacity: 0.28;
+  cursor: not-allowed;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+  .hero-copa-header {
+    padding: 24px 14px 18px;
+  }
+
+  .hero-copa-title {
+    font-size: 46px;
+  }
+
+  .hero-copa-subtitle {
+    font-size: 10px;
+    max-width: 310px;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .side-nav {
+    left: 14px;
+    top: auto;
+    bottom: 82px;
+    transform: translateX(-130%);
+    width: 78px;
+    transition: transform 0.25s ease;
+  }
+
+  .side-nav-open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: rgba(0,0,0,0.28);
+  }
+
+  .album-page-header {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 10px;
+    min-height: 76px;
+    padding: 10px 10px;
+    border-radius: 16px;
+  }
+
+  .album-page-title {
+    font-size: 15px;
+  }
+
+  .album-page-subtitle {
+    font-size: 10px;
+  }
+
+  .album-page-counter {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    padding: 3px 8px;
+  }
+
+  .album-page-arrow {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+}

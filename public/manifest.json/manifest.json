@@ -1,0 +1,25 @@
+{
+  "name": "WE ARE S2 - Álbum de Memórias",
+  "short_name": "WE ARE S2",
+  "description": "Álbum romântico de memórias, pacotinhos e prêmios especiais da Copa do Amor.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061329",
+  "theme_color": "#061329",
+  "icons": [
+    {
+      "src": "/icons.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
