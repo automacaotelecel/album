@@ -827,7 +827,7 @@ const ModalFigurinha = ({ sticker, onClose }) => {
                 Figurinha aberta
               </div>
               <p className="text-white/60 text-xs mt-2 font-bold">
-                Essa visualização mostra a foto completa e os detalhes da memória, como uma carta especial do álbum.
+                A cada figura aberta você fica mais linda.
               </p>
             </div>
           </div>
@@ -850,8 +850,8 @@ export default function App() {
   );
 
   const [pacotes, setPacotes] = useState(() =>
-    parseInt(localStorage.getItem(STORAGE_KEYS.pacotes) || '10', 10)
-  );
+  parseInt(localStorage.getItem(STORAGE_KEYS.pacotes) || '0', 10)
+);
 
   const [ultimoDiario, setUltimoDiario] = useState(() =>
     localStorage.getItem(STORAGE_KEYS.ultimoDiario) || ''
@@ -1319,7 +1319,7 @@ export default function App() {
                       Bônus diário
                     </div>
                     <p className="text-white/60 text-[10px] font-bold mt-1 leading-snug">
-                      Ela ganha 1 pacotinho por dia ao entrar. Instalando o app, ganha +2 pacotinhos especiais.
+                      Ganha 1 pacotinho por dia ao entrar.
                     </p>
                   </div>
                 </div>
