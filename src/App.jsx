@@ -15,6 +15,7 @@ import {
   CalendarHeart,
   Smartphone
 } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
 const STORAGE_KEYS = {
@@ -1434,6 +1435,7 @@ export default function App() {
         sticker={selectedSticker}
         onClose={() => setSelectedSticker(null)}
       />
+      <Analytics />
     </div>
   );
 }
